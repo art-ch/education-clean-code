@@ -22,6 +22,7 @@ const Date = () => {
             {getDaysSinceWarStarted()} days have passed since war started
           </Alert>
           <Card.Title className="display-4">Clock</Card.Title>
+          <Card.Subtitle>Clean Variables and Functions</Card.Subtitle>
           <h2 className="display-6 fs-4 fst-italic">
             Today is {dayName}, {month} {dayNumber} of year {year}
           </h2>

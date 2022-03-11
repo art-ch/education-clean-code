@@ -1,6 +1,28 @@
+const generate16DigitNumber = () => {
+  const LENGTH_OF_NUMBER = 16;
+
+  const generatedNumber = Math.random().toFixed(LENGTH_OF_NUMBER).split('.')[1];
+
+  return generatedNumber;
+};
+
+const formatNumber = (number: string) => {
+  const formattingChunks = [];
+
+  for (var i = 0, charsLength = number.length; i < charsLength; i += 4) {
+    formattingChunks.push(number.substring(i, i + 4));
+  }
+
+  const formattedNumber = formattingChunks.join(' ');
+
+  return formattedNumber;
+};
+
 export const generateCardNumber = () => {
-  const LENGTH_OF_CARD_NUMBER = 16;
-  return Math.random().toFixed(LENGTH_OF_CARD_NUMBER).split('.')[1];
+  const rowCardNumber = generate16DigitNumber();
+  const formattedNumber = formatNumber(rowCardNumber);
+
+  return formattedNumber;
 };
 
 export const generateExpirationDate = () => {

@@ -1,7 +1,6 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 import { BankCardWrapper } from '../../styled';
-
 import { cardSchema } from '../../utils/bankAccount/bankAccount';
 
 const BankCard = (card: cardSchema) => {

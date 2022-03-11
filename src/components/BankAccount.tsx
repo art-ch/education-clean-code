@@ -1,6 +1,7 @@
 import { Alert, Card, Container, Row, Col } from 'react-bootstrap';
 
 import BankCard from './assistant-components/BankCard';
+import { Payments } from './assistant-components/solid-components';
 
 import { BankAccountWrapper } from '../styled';
 import bankAccount from '../utils/bankAccount/bankAccount';
@@ -16,11 +17,14 @@ const BankAccount = () => {
             Help Army Financially
           </Alert>
           <Card.Title className="display-4">Bank Account</Card.Title>
+          <Card.Subtitle>Clean Objects/Classes</Card.Subtitle>
         </Card.Header>
         <Card.Body>
-          <Card.Subtitle className="display-6 mb-3">Your Cards</Card.Subtitle>
           <Container>
             <Row>
+              <Card.Subtitle className="display-6 mb-3">
+                Your Cards
+              </Card.Subtitle>
               {cards.map((card, id) => {
                 const { cardNumber, expirationDate, balance } = card;
                 const props = {
@@ -35,6 +39,9 @@ const BankAccount = () => {
                   </Col>
                 );
               })}
+            </Row>
+            <Row>
+              <Payments />
             </Row>
           </Container>
         </Card.Body>

@@ -1,6 +1,6 @@
 import { Alert } from 'react-bootstrap';
 
-import { Date, BankAccount } from './components';
+import { Date, BankAccount, Diary } from './components';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +13,7 @@ const App = () => {
       </Alert>
       <Date />
       <BankAccount />
+      <Diary />
     </main>
   );
 };
