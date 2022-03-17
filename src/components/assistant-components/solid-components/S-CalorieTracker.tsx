@@ -1,5 +1,6 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import calorieTracker from '../../../utils/solid/s-calorieTracker';
+import { refineDisplayName } from '../../../utils/typographyRefiners';
 
 const CalorieTracker = () => {
   return (
@@ -11,7 +12,7 @@ const CalorieTracker = () => {
             return (
               <Col key={id}>
                 <Card>
-                  <Card.Title>{property}</Card.Title>
+                  <Card.Title>{refineDisplayName(property)}</Card.Title>
                   <Card.Body className="display-6">{value}</Card.Body>
                 </Card>
               </Col>

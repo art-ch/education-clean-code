@@ -1,18 +1,18 @@
 class CalorieTracker {
   maxCalories: number;
   currentCalories: number;
-  maxCalorieBreach: string;
+  maxCaloriesBreached: string;
 
   constructor(maxCalories: number) {
     this.maxCalories = maxCalories;
     this.currentCalories = 0;
-    this.maxCalorieBreach = 'No';
+    this.maxCaloriesBreached = 'No';
   }
 
   trackCalories(calorieCount: number) {
     this.currentCalories += calorieCount;
     if (this.currentCalories > this.maxCalories) {
-      this.maxCalorieBreach = logCalorieSurplus('Yes');
+      this.maxCaloriesBreached = logCalorieSurplus('Yes');
     }
   }
 }
