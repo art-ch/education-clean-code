@@ -73,6 +73,7 @@ const TrainSchedule = () => {
         <Card.Title className="display-4">
           Local Train Station Timetable
         </Card.Title>
+        <Card.Subtitle>React Grid</Card.Subtitle>
         <Card.Body>
           <Paper>
             <Grid rows={trainList} columns={columns}>
