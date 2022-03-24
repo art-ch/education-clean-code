@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Paper from '@mui/material/Paper';
-import {
-  SelectionState,
-  SortingState,
-  IntegratedSorting,
-  SearchState,
-  FilteringState,
-  IntegratedFiltering,
-  SummaryState,
-  IntegratedSummary
-} from '@devexpress/dx-react-grid';
-import {
-  Grid,
-  Toolbar,
-  SearchPanel,
-  Table,
-  TableHeaderRow,
-  TableFilterRow,
-  TableSelection,
-  TableSummaryRow
-} from '@devexpress/dx-react-grid-material-ui';
 import { Card } from 'react-bootstrap';
+
+import {
+  TimeTable,
+  TimeTableCharts
+} from './assistant-components/TrainSchedule-components';
 
 import { TrainScheduleWrapper } from '../styled';
 import { refineDisplayName } from '../utils/typographyRefiners';
 
-interface Train {
+export interface Train {
   type: string;
   id: string;
   origin: string;
@@ -44,7 +28,6 @@ interface TableColumn {
 const TrainSchedule = () => {
   const [trainList, setTrainList] = useState<Train[]>([]);
   const [columns, setColumns] = useState<TableColumn[]>([]);
-  const [selection, setSelection] = useState<(string | number)[]>([]);
 
   const generateColumns = (data: Train[]) => {
     const columnNames = Object.keys(data[0]);
@@ -65,6 +48,10 @@ const TrainSchedule = () => {
     };
 
     fetchTrains();
+
+    return () => {
+      setTrainList([]);
+    };
   }, []);
 
   return (
@@ -73,36 +60,10 @@ const TrainSchedule = () => {
         <Card.Title className="display-4">
           Local Train Station Timetable
         </Card.Title>
-        <Card.Subtitle>React Grid</Card.Subtitle>
+        <Card.Subtitle>React Grid &amp; Chart.js</Card.Subtitle>
         <Card.Body>
-          <Paper>
-            <Grid rows={trainList} columns={columns}>
-              <SelectionState
-                selection={selection}
-                onSelectionChange={setSelection}
-              />
-              <SortingState
-                defaultSorting={[{ columnName: 'arrival', direction: 'asc' }]}
-              />
-              <IntegratedSorting />
-              <FilteringState />
-              <SearchState />
-              <IntegratedFiltering />
-              <SummaryState
-                totalItems={[{ columnName: 'type', type: 'count' }]}
-              />
-              <IntegratedSummary />
-              <Table
-                columnExtensions={[{ columnName: 'amount', align: 'right' }]}
-              />
-              <TableHeaderRow showSortingControls />
-              <TableSelection selectByRowClick />
-              <TableFilterRow />
-              <TableSummaryRow />
-              <Toolbar />
-              <SearchPanel />
-            </Grid>
-          </Paper>
+          <TimeTable trainList={trainList} columns={columns} />
+          <TimeTableCharts />
         </Card.Body>
       </Card>
     </TrainScheduleWrapper>
